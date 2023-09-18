@@ -1,5 +1,5 @@
 <template>
-  <v-card :loading="loading" class="mx-auto my-12" max-width="374">
+  <v-card class="mx-auto card" :to="'/' + id">
     <template slot="progress">
       <v-progress-linear
         color="deep-purple"
@@ -8,58 +8,31 @@
       ></v-progress-linear>
     </template>
 
-    <v-img
-      height="250"
-      src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-    ></v-img>
+    <v-img height="250" :src="thumbnail" :alt="'image ' + title"></v-img>
 
-    <v-card-title>Cafe Badilico</v-card-title>
+    <v-card-title class="pb-0 text-h5 font-changa"
+      >{{ title }}
+      <v-chip v-if="isnew" class="ml-4" color="error">New</v-chip>
+    </v-card-title>
 
     <v-card-text>
-      <v-row align="center" class="mx-0">
-        <v-rating
-          :value="4.5"
-          color="amber"
-          dense
-          half-increments
-          readonly
-          size="14"
-        ></v-rating>
+      <h3 class="font-weight-regular">{{ publisher }}</h3>
 
-        <div class="grey--text ms-4">4.5 (413)</div>
-      </v-row>
-
-      <div class="my-4 text-subtitle-1">$ • Italian, Cafe</div>
-
-      <div>
-        Small plates, salads & sandwiches - an intimate setting with 12 indoor
-        seats plus patio seating.
+      <div class="my-4 text-subtitle-1">
+        <v-chip color="info">{{ genre }}</v-chip>
       </div>
-    </v-card-text>
 
-    <v-divider class="mx-4"></v-divider>
-
-    <v-card-title>Tonight's availability</v-card-title>
-
-    <v-card-text>
-      <v-chip-group
-        v-model="selection"
-        active-class="deep-purple accent-4 white--text"
-        column
-      >
-        <v-chip>5:30PM</v-chip>
-
-        <v-chip>7:30PM</v-chip>
-
-        <v-chip>8:00PM</v-chip>
-
-        <v-chip>9:00PM</v-chip>
-      </v-chip-group>
+      <div>{{ short_description }}</div>
     </v-card-text>
 
     <v-card-actions>
-      <v-btn color="deep-purple lighten-2" text @click="reserve">
-        Reserve
+      <v-btn
+        color="deep-purple lighten-2"
+        class="font-weight-bold"
+        text
+        :to="'/' + id"
+      >
+        See more
       </v-btn>
     </v-card-actions>
   </v-card>
@@ -68,9 +41,35 @@
 <script>
 export default {
   name: "GameCard",
+  props: {
+    id: Number,
+    title: String,
+    thumbnail: String,
+    publisher: String,
+    release_date: String,
+    genre: String,
+    short_description: String,
+    platform: String,
+    isnew: Boolean,
+  },
 };
 </script>
 
 <style scoped>
+.card {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(17, 25, 40, 0.55);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
 
+.cardLight {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
 </style>

@@ -1,13 +1,13 @@
 <template>
-  <v-app-bar dense dark class="navbar">
+  <v-app-bar dark class="navbar">
     <div class="d-flex align-center">
       <v-img
         alt="Vuetify Logo"
         class="shrink mr-2"
         contain
-        src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+        src="https://cdn-icons-png.flaticon.com/512/5260/5260498.png"
         transition="scale-transition"
-        width="20"
+        width="35"
       />
       <h1>F2P Games</h1>
     </div>
@@ -35,6 +35,11 @@ export default {
       },
     ],
   }),
+  methods: {
+    switchedTheme() {
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+    },
+  },
 };
 </script>
 
@@ -45,5 +50,9 @@ export default {
   background-color: rgba(17, 25, 40, 0.45) !important;
   position: absolute;
   z-index: 1;
+}
+
+header {
+  font-family: "Changa", sans-serif;
 }
 </style>
