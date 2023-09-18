@@ -36,3 +36,5 @@ Game detail consist of the detail of the game as example below it's a detail of 
 - vuex-persistedstate: ^4.1.0
 
 ### Deployment
+
+https://f2p-games-vue.netlify.app/
