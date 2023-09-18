@@ -17,22 +17,26 @@
           :alt="'image ' + gameDetail.thumbnail"
           class="rounded-xl"
         ></v-img>
-        <h5 class="title hidden-sm-and-down mt-5">
-          Visit official site:
-          <a
-            :href="gameDetail.game_url"
+
+        <div class="hidden-sm-and-down">
+          <h5 class="title mt-5">
+            Visit official site:
+            <a
+              :href="gameDetail.game_url"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="accent--text"
+              >Link</a
+            >
+          </h5>
+          <h5 class="title mt-5">See more information and user reviews</h5>
+          <v-btn
+            color="primary"
             target="_blank"
-            rel="noopener noreferrer"
-            >Link</a
+            :href="gameDetail.freetogame_profile_url"
+            >Visit FreeToGame</v-btn
           >
-        </h5>
-        <h5 class="title mt-5">See more information and user reviews</h5>
-        <v-btn
-          color="primary"
-          target="_blank"
-          :href="gameDetail.freetogame_profile_url"
-          >Visit FreeToGame</v-btn
-        >
+        </div>
       </v-col>
       <v-col cols="12" md="8">
         <h2 class="text-h2 font-changa font-weight-medium">
@@ -54,15 +58,25 @@
           <p class="title mt-3">Release Date: {{ gameDetail.release_date }}</p>
         </div>
         <p class="text-subtitle-1">{{ gameDetail.description }}</p>
-        <h5 class="title hidden-md-and-up">
-          Visit official site:
-          <a
-            :href="gameDetail.game_url"
+        <div class="hidden-md-and-up">
+          <h5 class="title">
+            Visit official site:
+            <a
+              :href="gameDetail.game_url"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="accent--text"
+              >Link</a
+            >
+          </h5>
+          <h5 class="title mt-5">See more information and user reviews</h5>
+          <v-btn
+            color="primary"
             target="_blank"
-            rel="noopener noreferrer"
-            >Link</a
+            :href="gameDetail.freetogame_profile_url"
+            >Visit FreeToGame</v-btn
           >
-        </h5>
+        </div>
         <v-divider
           v-if="gameDetail.minimum_system_requirements"
           class="my-10"
@@ -130,5 +144,3 @@ export default {
   methods: {},
 };
 </script>
-
-<style scoped></style>

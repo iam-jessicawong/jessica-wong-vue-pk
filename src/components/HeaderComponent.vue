@@ -14,9 +14,29 @@
 
     <v-spacer></v-spacer>
 
-    <v-btn v-for="item in navItems" :key="item.path" :to="item.path" text>
+    <v-btn
+      class="hidden-xs-only"
+      v-for="item in navItems"
+      :key="item.path"
+      :to="item.path"
+      text
+    >
       <span class="mr-2">{{ item.title }}</span>
     </v-btn>
+
+    <v-menu bottom left class="hidden-sm-and-up">
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn icon v-bind="attrs" v-on="on" class="hidden-sm-and-up">
+          <v-icon>mdi-menu</v-icon>
+        </v-btn>
+      </template>
+
+      <v-list v-for="item in navItems" :key="item.path" class="mobileNav">
+        <v-list-item :to="item.path">
+          <v-list-item-title>{{ item.title }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
   </v-app-bar>
 </template>
 
@@ -50,6 +70,12 @@ export default {
   background-color: rgba(17, 25, 40, 0.45) !important;
   position: absolute;
   z-index: 1;
+}
+
+.mobileNav {
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  background-color: rgba(17, 25, 40, 0.45) !important;
 }
 
 header {

@@ -28,7 +28,7 @@
     <v-card-actions>
       <v-btn
         color="deep-purple lighten-2"
-        class="font-weight-bold"
+        class="font-weight-bold text-subtitle-1"
         text
         :to="'/' + id"
       >
